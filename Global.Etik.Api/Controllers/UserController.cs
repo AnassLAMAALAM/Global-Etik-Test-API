@@ -20,13 +20,13 @@ namespace Global.Etik.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost(Name = "AddUser")]
+        [HttpPost("Create", Name = "AddUser")]
         public async Task<ActionResult<Guid>> Create([FromBody] CreateUserCommand create)
         {
             Guid id = await _mediator.Send(create);
             return Ok(id);
         }
-        [HttpPut(Name = "UpdateUser")]
+        [HttpPut("Update", Name = "UpdateUser")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
